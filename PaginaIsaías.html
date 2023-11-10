@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Chida con Mensaje y Edad</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        img {
+            width: 300px;
+            height: auto;
+            margin-top: 20px;
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>¡Bienvenido a la Página Chida de Isaías! uwu</h1>
+    <p>Pon tu nombre y edad y te ganarás algo :3</p>
+
+    <form id="myForm" onsubmit="return saludar()">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required>
+        <br>
+        <button type="submit">enviar</button>
+    </form>
+
+    <p id="mensaje"></p>
+
+    <script>
+        function saludar() {
+            var nombre = document.getElementById("nombre").value;
+            var mensaje = "¡Está chido tu nombre, " + nombre + "! Me caes bien. Toma $5.";
+            document.getElementById("mensaje").innerText = mensaje;
+
+    
+            document.getElementById("imagen").style.display = "block";
+
+            
+            var edad = prompt("Cuántos años tienes, " + nombre + "?");
+            var mensajeFinal = "Pero de no bañarte jajajaja no cheto, chascarrillo cibernético. Bueno, mucho gusto en conocerte, " + nombre + ". Y ahora toma 5 pesoo, nomás porque sí.";
+            
+            
+            document.getElementById("mensaje").innerText = mensajeFinal;
+
+            
+            return false;
+        }
+    </script>
+
+    
+    <img id="imagen" src="https://media1.allnumis.com/14346/30-01-2012/5-pesos_14346_13477091297752L.jpg" alt="5 pesos">
+
+</body>
+</html>
