@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temporizador en Línea</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #timer-display {
+            font-size: 30px;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Temporizador en Línea</h1>
+
+<div>
+    <label for="minutes">Minutos:</label>
+    <input type="number" id="minutes" value="1" min="1">
+</div>
+
+<button onclick="startTimer()">Iniciar Temporizador</button>
+<button onclick="goToHomePage()">Regresar a la Página Principal</button>
+
+<div id="timer-display"></div>
+
+<script>
+    let countdown;
+
+    function startTimer() {
+        const minutes = document.getElementById('minutes').value;
+        const seconds = minutes * 60;
+
+        let timer = seconds;
+        clearInterval(countdown);
+
+        countdown = setInterval(function() {
+            const minutesRemaining = Math.floor(timer / 60);
+            const secondsRemaining = timer % 60;
+
+            document.getElementById('timer-display').innerText = `${minutesRemaining}:${secondsRemaining < 10 ? '0' : ''}${secondsRemaining}`;
+
+            if (timer === 0) {
+                clearInterval(countdown);
+                alert('¡Tiempo terminado!');
+            }
+
+            timer--;
+        }, 1000);
+    }
+
+    function goToHomePage() {
+        // Cambia 'index.html' al nombre de tu archivo principal o a la URL de tu página principal.
+        window.location.href = 'index.html';
+    }
+</script>
+
+</body>
+</html>
